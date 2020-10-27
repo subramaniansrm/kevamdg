@@ -36,15 +36,34 @@ public class CommonAction<T> {
 
 	// Validate token
 	public AuthDetailsVO tokenValidate(String accessToken) {
-		return commonService.tokenValidate(accessToken);
+		AuthDetailsVO authDetailsVo = new AuthDetailsVO();
+		try {
+			authDetailsVo = commonService.tokenValidate(accessToken);
+		} catch (NullPointerException e) {
+
+		}
+		return authDetailsVo;
 	}
 
 	public String getHeaderAccessToken(HttpServletRequest request) {
-		return commonService.getHeaderAccessToken(request);
+		String access = "";
+		try {
+			access = commonService.getHeaderAccessToken(request);
+		} catch (NullPointerException e) {
+
+		}
+
+		return access;
 	}
 
 	public UserScreenMappingVO getScreen(Integer id, AuthDetailsVO authDetailsVO) {
-		return commonService.getScreen(id, authDetailsVO);
+		UserScreenMappingVO userScreenMapping = new UserScreenMappingVO();
+		try {
+			userScreenMapping = commonService.getScreen(id, authDetailsVO);
+		} catch (NullPointerException e) {
+
+		}
+		return userScreenMapping;
 	}
 
 }
